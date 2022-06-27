@@ -1,9 +1,10 @@
 import cv2
 import numpy
+import seperateNumbers as sn
 
 
 def openImg(name=""):
-    orgimg = cv2.imread(r"res/pt4(1).jpg")
+    orgimg = cv2.imread(r"res/img4.jpg")
     assert orgimg is not None
     h, w = orgimg.shape[:2]
     img = [[0 if sum(orgimg[i][j]) < 50 else 1 for j in range(0, w)] for i in range(0, h)]
@@ -13,7 +14,7 @@ def openImg(name=""):
 def dfa(img):
     h = len(img)
     w = len(img[0])
-    startw = int(w * 0.45)
+    startw = int(w * 0.2)
     p = [h - 1, startw]
     l, r = startw, startw
     while p[0] != 0:
@@ -80,8 +81,9 @@ def thresholding(img):
 
 if __name__ == '__main__':
     img = openImg("")
-    numList = dfa(img)
-    # 处理后结果比较糊，需要再做一遍二值，20为阈值
+    numList = sn.quickSeparateNumbers(img)
+    numList = dfa(numList[0])
+    # # 处理后结果比较糊，需要再做一遍二值，20为阈值
     cv2.imwrite(r"result/num1.jpg", numList[0])
     cv2.imwrite(r"result/num2.jpg", numList[1])
     print("DONE")
