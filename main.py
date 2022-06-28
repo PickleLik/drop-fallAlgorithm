@@ -83,7 +83,7 @@ if __name__ == '__main__':
     img = openImg("")
     numList = sn.quickSeparateNumbers(img)
     numList = dfa(numList[0])
-    # # 处理后结果比较糊，需要再做一遍二值，20为阈值
+    # 处理后结果比较糊，需要再做一遍二值，20为阈值
     cv2.imwrite(r"result/num1.jpg", numList[0])
     cv2.imwrite(r"result/num2.jpg", numList[1])
     print("DONE")
