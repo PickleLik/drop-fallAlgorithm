@@ -63,8 +63,8 @@ def dfa(img):
             t[j] = [0]*padding1 + t[j] + [0]*padding2
         t = numpy.array(t, numpy.uint8)
         numList[i] = t
-    num1 = cv2.resize(numList[0], (28, 28), interpolation=cv2.INTER_AREA)
-    num2 = cv2.resize(numList[1], (28, 28), interpolation=cv2.INTER_AREA)
+    num1 = cv2.resize(numList[0], (28, 28), interpolation = cv2.INTER_AREA)
+    num2 = cv2.resize(numList[1], (28, 28), interpolation = cv2.INTER_AREA)
     thresholding(num1)
     thresholding(num2)
     return [num1, num2]
